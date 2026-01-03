@@ -167,6 +167,29 @@ small {
     transform: none;
 }
 
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.02);
+}
+
+.family-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 8px;
+    /* optional: border or shadow for the big image? */
+}
+
 .tag {
     display: inline-block;
     font-family: var(--font-mono);
