@@ -1,0 +1,50 @@
+baseurl = "https://johngriffiths.github.io/test-website-v1" # brainmodes2025.org"
+title = "Embrained | Embodied Intelligence"
+theme = "dimension"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+disableKinds=["RSS"]
+
+[params]
+  #logo = "fa-laptop"
+
+[[params.social]]
+  medium = "twitter"
+  icon = "twitter"
+  link = "#"
+
+[[params.social]]
+  medium = "facebook"
+  icon = "facebook"
+  link = "#"
+
+[[params.social]]
+  medium = "instagram"
+  icon = "instagram"
+  link = "#"
+
+[[params.social]]
+  medium = "github"
+  icon = "github"
+  link = "#"
+
+[languages]
+[languages.en]
+languageName = "English"
+weight = 1
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+#[module]
+#  [[module.imports]]
+#    path = "hugo-module-gallery-grid"
+
+#[module]
+#  [[module.imports]]
+#   path = "hugo-shortcode-gallery"
+
