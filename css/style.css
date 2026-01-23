@@ -1994,16 +1994,17 @@ body.is-preload #footer {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
-	max-width: 800px;
-	margin: 0 auto;
+	/* max-width: 800px;  Removed to allow full width alignment logic if needed, or keep if text wrapping is desired but left aligned */
+	/* margin: 0 auto; Removed centering */
 }
 
 .contact-info {
-	background: rgba(255, 255, 255, 0.05);
-	padding: 2rem;
-	border-radius: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	text-align: center;
+	/* Removed card styling */
+	/* background: rgba(255, 255, 255, 0.05); */
+	/* padding: 2rem; */
+	/* border-radius: 12px; */
+	/* border: 1px solid rgba(255, 255, 255, 0.1); */
+	text-align: left; /* Changed from center */
 }
 
 .contact-info h3 {
