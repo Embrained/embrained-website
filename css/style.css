@@ -365,6 +365,14 @@ sup {
 	top: -0.5rem;
 }
 
+.mission-statement {
+	margin-top: 1rem;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	font-size: 1.1rem;
+	color: rgba(255, 255, 255, 0.8);
+}
+
 blockquote {
 	border-left: solid 4px #ffffff;
 	font-style: italic;
@@ -820,7 +828,7 @@ input[type="radio"]+label:before {
 
 .image.main {
 	display: block;
-	margin: 2.5rem 0;
+	margin: 1rem 0;
 	width: 100%;
 }
 
@@ -1395,20 +1403,20 @@ body.is-preload #bg:before {
 	-ms-transition: opacity 0.325s ease-in-out;
 	transition: opacity 0.325s ease-in-out;
 	position: relative;
-	margin-top: 2rem;
-	/* Reduced from 3.5rem */
+	margin-top: 1.25rem;
+	/* Reduced from 2rem (originally 3.5rem) */
 }
 
 #header>*:before {
 	content: '';
 	display: block;
 	position: absolute;
-	top: calc(-2.0rem - 1px);
+	top: calc(-1.25rem - 1px);
 	/* Adjusted to match new margin */
 	left: calc(50% - 1px);
 	width: 1px;
-	height: calc(2.0rem + 1px);
-	/* Reduced from 3.5rem */
+	height: calc(1.25rem + 1px);
+	/* Reduced from 2rem */
 	background: #ffffff;
 }
 
@@ -1450,7 +1458,7 @@ body.is-preload #bg:before {
 	-webkit-transition-delay: 0.25s;
 	-ms-transition-delay: 0.25s;
 	transition-delay: 0.25s;
-	padding: 3rem 2rem;
+	padding: 2.25rem 2rem;
 	max-height: 40rem;
 	overflow: hidden;
 }
@@ -1689,7 +1697,8 @@ body.is-preload #header .content .inner {
 	position: relative;
 	width: 40rem;
 	max-width: 100%;
-	background-color: rgba(27, 31, 34, 0.85);
+	background-color: #ffffff;
+	color: #1b1f22;
 	border-radius: 4px;
 	opacity: 0;
 }
@@ -1948,10 +1957,13 @@ body.is-preload #footer {
 }
 
 .eco-image img {
-	width: 15rem;
-	/* MATCHING TEAM SIZE */
-	height: 15rem;
-	/* MATCHING TEAM SIZE */
+	width: auto;
+	/* MATCHING TEAM SIZE - but allowing rectangular */
+	height: auto;
+	max-width: 20rem;
+	/* Allow wider for rectangular products */
+	max-height: 15rem;
+	/* Keep height consistent with team */
 	object-fit: contain;
 	/* Prevent cropping for products */
 	border-radius: 4px;
@@ -1989,6 +2001,30 @@ body.is-preload #footer {
 	}
 }
 
+/* Combined Image Styles */
+.eco-image.combined-image {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+}
+
+.eco-image.combined-image img {
+	width: auto;
+	height: auto;
+	max-height: 12rem;
+	max-width: 100%;
+}
+
+.plus-symbol {
+	font-size: 3rem;
+	line-height: 1;
+	font-weight: 700;
+	color: #1b1f22;
+	text-shadow: 0 0 10px rgba(188, 19, 254, 0.4);
+	margin: 0 0.5rem;
+}
+
 /* CONTACT */
 .contact-container {
 	display: flex;
@@ -2004,13 +2040,14 @@ body.is-preload #footer {
 	/* padding: 2rem; */
 	/* border-radius: 12px; */
 	/* border: 1px solid rgba(255, 255, 255, 0.1); */
-	text-align: left; /* Changed from center */
+	text-align: left;
+	/* Changed from center */
 }
 
 .contact-info h3 {
 	margin-bottom: 1rem;
 	/* ... existing content ... */
-	color: #fff;
+	color: #1b1f22;
 }
 
 /* ==========================================================================
@@ -2038,14 +2075,14 @@ body.is-preload #footer {
 }
 
 .team-link {
-	border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
-	color: #fff;
+	border-bottom: 1px dotted rgba(27, 31, 34, 0.5);
+	color: #bc13fe;
 	text-decoration: none;
 }
 
 /* Carteso Section */
 .carteso-desc {
-	margin-bottom: 0;
+	margin-bottom: 2rem;
 }
 
 /* Footer */
@@ -2053,4 +2090,168 @@ body.is-preload #footer {
 	font-size: 0.8rem;
 	opacity: 0.6;
 	margin-top: 1rem;
+}
+
+#research .eco-container {
+	gap: 0;
+}
+
+.image.main.software-hero {
+	text-align: left;
+}
+
+.image.main.software-hero img {
+	width: 100%;
+	max-width: 400px;
+	object-fit: contain;
+	display: block;
+	/* Ensure block behavior */
+	margin: 0;
+	/* Left align (remove auto margins if any) */
+}
+
+.image.main.software-hero:before {
+	display: none;
+}
+
+/* LIGHT THEME PANEL OVERRIDES */
+#main article h1,
+#main article h2,
+#main article h3,
+#main article h4,
+#main article h5,
+#main article h6,
+#main article strong,
+#main article b,
+#main article label,
+#main article .solid,
+#main article .major {
+	color: #1b1f22;
+}
+
+#main article h1.major,
+#main article h2.major,
+#main article h3.major,
+#main article h4.major,
+#main article h5.major,
+#main article h6.major {
+	border-bottom-color: rgba(27, 31, 34, 0.2);
+}
+
+#main article a {
+	color: #bc13fe;
+	border-bottom-color: rgba(188, 19, 254, 0.3);
+}
+
+#main article a:hover {
+	border-bottom-color: transparent;
+	color: #9d0fd3;
+}
+
+#main article blockquote {
+	border-left-color: #1b1f22;
+}
+
+#main article code {
+	background: rgba(27, 31, 34, 0.1);
+	color: #1b1f22;
+}
+
+#main article hr {
+	border-bottom-color: rgba(27, 31, 34, 0.1);
+}
+
+/* Inputs */
+#main article input[type="text"],
+#main article input[type="password"],
+#main article input[type="email"],
+#main article input[type="tel"],
+#main article select,
+#main article textarea {
+	color: #1b1f22;
+	border-color: rgba(27, 31, 34, 0.3);
+}
+
+#main article input[type="text"]:focus,
+#main article input[type="password"]:focus,
+#main article input[type="email"]:focus,
+#main article input[type="tel"]:focus,
+#main article select:focus,
+#main article textarea:focus {
+	border-color: #bc13fe;
+	box-shadow: 0 0 0 1px #bc13fe;
+	background: rgba(27, 31, 34, 0.02);
+}
+
+/* Select Arrow - Needs dark SVG */
+#main article select {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%231b1f22' /%3E%3C/svg%3E");
+}
+
+/* Checkboxes */
+#main article input[type="checkbox"]+label,
+#main article input[type="radio"]+label {
+	color: #1b1f22;
+}
+
+#main article input[type="checkbox"]+label:before,
+#main article input[type="radio"]+label:before {
+	border-color: rgba(27, 31, 34, 0.3);
+}
+
+#main article input[type="checkbox"]:checked+label:before,
+#main article input[type="radio"]:checked+label:before {
+	background: #1b1f22 !important;
+	border-color: #1b1f22 !important;
+	color: #ffffff;
+}
+
+/* Tables */
+#main article table tbody tr {
+	border-color: rgba(27, 31, 34, 0.2);
+}
+
+#main article table th {
+	color: #1b1f22;
+}
+
+#main article table thead {
+	border-bottom-color: #1b1f22;
+}
+
+#main article table tfoot {
+	border-top-color: #1b1f22;
+}
+
+#main article table tbody tr:nth-child(2n + 1) {
+	background-color: rgba(27, 31, 34, 0.05);
+}
+
+/* Buttons */
+#main article input[type="submit"],
+#main article input[type="reset"],
+#main article input[type="button"],
+#main article button,
+#main article .button {
+	color: #1b1f22 !important;
+	box-shadow: inset 0 0 0 1px rgba(27, 31, 34, 0.3);
+}
+
+#main article input[type="submit"]:hover,
+#main article .button:hover {
+	background-color: rgba(27, 31, 34, 0.05);
+}
+
+/* Close Button */
+#main article .close:before {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' zoomAndPan='disable'%3E%3Cstyle%3Eline %7B stroke: %231b1f22%3B stroke-width: 1%3B %7D%3C/style%3E%3Cline x1='2' y1='2' x2='18' y2='18' /%3E%3Cline x1='18' y1='2' x2='2' y2='18' /%3E%3C/svg%3E");
+}
+
+#main article .close:hover:before {
+	background-color: rgba(27, 31, 34, 0.1);
+}
+
+/* Footer in panel */
+#footer .copyright {
+	color: #000;
 }
