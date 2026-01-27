@@ -216,7 +216,7 @@ html {
 
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	html {
 		font-size: 11pt;
@@ -339,7 +339,7 @@ h6 {
 	font-size: 0.6rem;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	h1 {
 		font-size: 1.75rem;
@@ -836,7 +836,7 @@ input[type="radio"]+label:before {
 	width: 100%;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	.image.main {
 		margin: 2rem 0;
@@ -1245,6 +1245,7 @@ button {
 	-ms-transform: scale(1.0);
 	transform: scale(1.0);
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -1354,7 +1355,7 @@ body.is-preload #bg:before {
 
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	#wrapper {
 		padding: 2rem 1rem;
@@ -1491,9 +1492,7 @@ body.is-preload #bg:before {
 	/* border-left: solid 1px #ffffff; Moved to 'a' tag */
 }
 
-#header nav ul li:first-child {
-	/* border-left: 0; */
-}
+
 
 #header nav ul li a {
 	display: block;
@@ -1533,9 +1532,7 @@ body.is-preload #bg:before {
 	background: #ffffff;
 }
 
-#header nav.use-middle ul li.is-middle {
-	/* border-left: 0;  Old rule for li */
-}
+
 
 #header nav.use-middle ul li.is-middle a {
 	border-left: 0;
@@ -1580,7 +1577,7 @@ body.is-preload #header .content .inner {
 
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	#header>* {
 		margin-top: 2rem;
@@ -1752,7 +1749,7 @@ body.is-preload #header .content .inner {
 	background-color: rgba(255, 255, 255, 0.175);
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
 
 	#main article {
 		padding: 3.5rem 2rem 0.5rem 2rem;
@@ -2024,6 +2021,19 @@ body.is-preload #footer {
 	color: #1b1f22;
 	text-shadow: 0 0 10px rgba(188, 19, 254, 0.4);
 	margin: 0 0.5rem;
+}
+
+@media screen and (max-width: 480px) {
+	.eco-image.combined-image {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.plus-symbol {
+		transform: rotate(90deg);
+		/* Optional: Rotate plus if desired, or keep as is */
+		margin: 0.5rem 0;
+	}
 }
 
 /* CONTACT */
