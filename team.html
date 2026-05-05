@@ -1,0 +1,141 @@
+<!--
+  Embrained - Neural Navigation Software Suite
+  Copyright (C) 2026 Embrained
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embrained | Team</title>
+    <meta name="description" content="Meet the team behind Embrained and the Plexus robot. We're building an open platform for embodied AI research at home.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .investigator-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .investigator-avatar {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--clr-bg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        @media(max-width: 600px) {
+            .investigator-block { flex-direction: column; align-items: center; text-align: center; gap: 1rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <a href="index.html">EMBRAINED</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Vision</a>
+            <a href="robot.html">Hardware & Software</a>
+            <a href="beta.html">Beta Pilot</a>
+            <a href="team.html" class="active">Team</a>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section class="section section-white" style="padding-top: 2rem; padding-bottom: 2rem;">
+            <div class="container">
+                <h1>The Team</h1>
+                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
+                    Est. 2026. Embrained, LLC is a neurorobotics company dedicated to democratizing access to embodied AI.
+                </p>
+            </div>
+        </section>
+
+        <section class="section section-blue" style="padding-top: 2rem;">
+            <div class="container">
+                
+                <!-- PI 1 -->
+                <div class="investigator-block">
+                    <img src="images/ChrisHarris.jpg" alt="Christopher Harris" class="investigator-avatar">
+                    <div>
+                        <h3 style="margin-top: 0; margin-bottom: 0.25rem; color: var(--clr-text-main);">Dr. Christopher Harris</h3>
+                        <p style="color: var(--clr-blue); font-weight: 600; margin-bottom: 1rem;">Founder & CEO</p>
+                        <p>Dr. Christopher Harris is a neuroscientist (PhD, Sussex) and former PI at Backyard Brains, where he created the educational SpikerBot platform.</p>
+                        <p>He founded Embrained in 2026 to democratize embodied AI, designing architectures that allow standard PCs to drive complex robots. His long-term aim is to integrate essential biological primitives into the Embrained ecosystem to explore general intelligence and liveliness.</p>
+                        <p style="margin-bottom: 0;"><a href="https://www.youtube.com/watch?v=CbOJHywZ-J0" target="_blank" rel="noopener" style="font-weight: 600; color: var(--clr-blue);">Watch: Emergence in Educational Neurorobotics</a></p>
+                    </div>
+                </div>
+
+                <!-- PI 2 -->
+                <div class="investigator-block">
+                    <img src="images/JohnGriffiths.jpg" alt="John Griffiths" class="investigator-avatar">
+                    <div>
+                        <h3 style="margin-top: 0; margin-bottom: 0.25rem; color: var(--clr-text-main);">Dr. John Griffiths</h3>
+                        <p style="color: var(--clr-orange); font-weight: 600; margin-bottom: 1rem;">CSO & Special Advisor</p>
+                        <p>Dr. John Griffiths is Head of the Whole Brain Modelling Group at CAMH's Krembil Centre for Neuroinformatics and an Assistant Professor at the University of Toronto. He holds a PhD from the University of Cambridge.</p>
+                        <p>His work bridges abstract computational models and biological reality, focusing on the mathematical modelling of large-scale neural dynamics.</p>
+                        <p style="margin-bottom: 0;"><a href="https://www.youtube.com/watch?v=9x6dwdle8WQ" target="_blank" rel="noopener" style="font-weight: 600; color: var(--clr-orange);">Watch: Whole Brain Modelling</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section section-white">
+            <div class="container" style="text-align: center;">
+                <h2>Get in Touch</h2>
+                <p style="margin-bottom: 1rem;">
+                    Interested in the Beta Pilot, a research collaboration, or just want to ask a question? We'd love to hear from you.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem;">
+                    <a href="mailto:beta@embrained.ai" class="btn">beta@embrained.ai</a>
+                    <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" class="btn btn-secondary" target="_blank" rel="noopener">Join Our Discord</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 0.5rem;">&copy; 2026 Embrained, LLC</p>
+            <p style="font-size: 0.8rem; margin-bottom: 0;">
+                <a href="legal/Terms_of_Service.md" style="color: var(--clr-text-muted);">Terms of Service</a> &middot;
+                <a href="legal/Privacy_Policy.md" style="color: var(--clr-text-muted);">Privacy Policy</a> &middot;
+                <a href="legal/Return_Policy.md" style="color: var(--clr-text-muted);">Return Policy</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

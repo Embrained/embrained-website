@@ -1,0 +1,166 @@
+<!--
+  Embrained - Neural Navigation Software Suite
+  Copyright (C) 2026 Embrained
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embrained | The Plexus Robot & Software Suite</title>
+    <meta name="description" content="The Plexus robot streams live camera data to your laptop over WiFi. The Embrained app lets you drive, record, train, and deploy neural navigation models — all locally.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <a href="index.html">EMBRAINED</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Vision</a>
+            <a href="robot.html" class="active">Hardware & Software</a>
+            <a href="beta.html">Beta Pilot</a>
+            <a href="team.html">Team</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section section-white" style="padding-top: 2rem;">
+            <div class="container">
+                <h1>Hardware & Software</h1>
+                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
+                    The Plexus is an affordable robot that turns your laptop into an embodied AI research station. The Embrained app is the control center that ties it all together.
+                </p>
+            </div>
+        </section>
+
+        <!-- THE ROBOT -->
+        <section class="section section-orange">
+            <div class="container">
+                <h2>The Plexus Robot</h2>
+                <p>
+                    Plexus is a small, two-wheeled robot built from standard, replaceable parts: an ESP32-S3 microcontroller with a camera, two TT gearbox motors, lithium-ion batteries, and a custom PCB that handles power management and motor control. It connects to your laptop over WiFi and streams live camera frames at up to 10 fps.
+                </p>
+                <p>
+                    There is no onboard GPU, no lidar, and no depth sensor. This is deliberate. By keeping the hardware simple and cheap, we ensure that <strong>your laptop is the brain</strong>. The robot never becomes obsolete — when better models come along, you just update your software. And because every Plexus shares the exact same physical form factor (camera height, field of view, gear ratios), models trained by one user can transfer to another user's robot.
+                </p>
+                <p>
+                    The Plexus uses imprecise, non-linear hobby motors without wheel encoders — the kind that slip on carpet and drift on hard floors. This is a feature, not a bug. Navigation models that learn to succeed <em>despite</em> this noise are far more robust than models trained on precision hardware in a lab.
+                </p>
+                <div style="margin-top: 1.5rem;">
+                    <img src="images/plexus1.jpg" alt="The Plexus robot — a small two-wheeled platform with a camera module, battery pack, and custom PCB enclosed in laser-cut acrylic plates." class="responsive-img" style="max-height: 350px; max-width: 60%; min-width: 250px; object-fit: cover; margin-bottom: 0;">
+                </div>
+
+                <div class="req-box" style="margin-top: 2.5rem; border-color: rgba(234, 88, 12, 0.3);">
+                    <h3 style="color: var(--clr-orange);">What's in the Box</h3>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--clr-text-muted);">
+                        <li style="margin-bottom: 0.5rem;"><strong>XIAO ESP32-S3 Sense</strong> — Microcontroller with OV2640 camera module</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Plexus Beta Board</strong> — Custom PCB handling motor drivers, power regulation, and sensor inputs</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>2× TT Gearbox Motors</strong> — Differential drive with rubber wheels</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Laser-Cut Acrylic Chassis</strong> — Three-plate sandwich design</li>
+                        <li><strong>Ball Caster & Ultrasonic Sensor</strong> — Rear support and forward obstacle detection</li>
+                    </ul>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--clr-text-muted);"><em>Note: 18650 Li-Ion batteries are not included due to shipping restrictions. You will need to purchase two batteries separately.</em></p>
+            </div>
+        </section>
+
+        <!-- COMMUNITY CO-TRAINING -->
+        <section class="section section-green">
+            <div class="container">
+                <h2>Why Identical Hardware Matters</h2>
+                <p>
+                    One of the biggest bottlenecks in robotics research is data fragmentation: every lab uses different robots, so datasets can't be combined. The Plexus solves this by design. Every unit has the same camera, the same motors, and the same physical dimensions.
+                </p>
+                <p>
+                    This means data collected by one user is structurally compatible with data from any other user. Over time, the community can build a shared corpus of navigation data spanning hundreds of distinct living rooms, kitchens, and offices — without anyone uploading a single raw image.
+                </p>
+                <p>
+                    Instead of sharing images, users share only the mathematical weights of their locally-trained models. These anonymous tensors are averaged to produce increasingly capable "master models" that have effectively learned from many environments while keeping every user's visual data private. This is <strong>privacy-preserving federated learning</strong> applied to physical robots.
+                </p>
+            </div>
+        </section>
+
+        <!-- SOFTWARE -->
+        <section class="section section-yellow">
+            <div class="container">
+                <h2>The Software Suite</h2>
+                <p>
+                    The Embrained app is a browser-based dashboard that runs locally on your machine. It connects to your Plexus over WiFi and gives you everything you need in one interface: live camera feed, manual driving controls, data recording, model deployment, and real-time analytics.
+                </p>
+                <div style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <img src="images/software1.png" alt="The Embrained Live Mode dashboard showing camera feed, latent space visualization, and autonomy controls — with color-coded functional zones." class="responsive-img" style="margin-bottom: 0; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+                </div>
+
+                <div class="req-box" style="margin-top: 2rem; border-color: rgba(202, 138, 4, 0.3);">
+                    <h3 style="color: var(--clr-yellow);">Drive & Record</h3>
+                    <p>Use WASD keys to drive the robot manually through your space while the app automatically logs camera frames, motor commands, and sensor data into structured datasets. You can also let the robot explore autonomously using built-in random-walk controllers.</p>
+                </div>
+
+                <div class="req-box" style="border-color: rgba(202, 138, 4, 0.3);">
+                    <h3 style="color: var(--clr-yellow);">Train (Terminal Scripts)</h3>
+                    <p>Once you've collected data, you run Python scripts from the terminal to train your models. The pipeline includes:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--clr-text-muted);">
+                        <li style="margin-bottom: 0.5rem;"><strong>Dataset Preparation</strong> — Pool raw recordings into a unified training set</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Perception Model (VQ-VAE)</strong> — Learn a compressed visual representation of your environment</li>
+                        <li><strong>Navigation Policy (CQL)</strong> — Learn which actions move the robot toward a goal location</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">All training runs locally on your GPU. A mid-range laptop (4-8GB VRAM) is sufficient.</p>
+
+                </div>
+
+                <div class="req-box" style="border-color: rgba(202, 138, 4, 0.3);">
+                    <h3 style="color: var(--clr-yellow);">Deploy & Evaluate</h3>
+                    <p>Load your trained model into the app and hand control of the robot to the AI. The dashboard shows you in real time what the model is "thinking" — its latent space position, the goal it's aiming for, and the motor commands it's choosing. Built-in evaluation tools automatically score success rates across repeated trials.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section section-white">
+            <div class="container" style="text-align: center;">
+                <h2>Join the Experiment</h2>
+                <p style="max-width: 600px; margin: 0 auto 2rem auto;">
+                    Skip the soldering and 3D printing. Get a fully assembled Plexus robot and start training physical AI models in your living room today. We're shipping our first beta units now.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <a href="beta.html" class="btn">Get a Beta Unit</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 0.5rem;">&copy; 2026 Embrained, LLC</p>
+            <p style="font-size: 0.8rem; margin-bottom: 0;">
+                <a href="legal/Terms_of_Service.md" style="color: var(--clr-text-muted);">Terms of Service</a> &middot;
+                <a href="legal/Privacy_Policy.md" style="color: var(--clr-text-muted);">Privacy Policy</a> &middot;
+                <a href="legal/Return_Policy.md" style="color: var(--clr-text-muted);">Return Policy</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

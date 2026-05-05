@@ -1,0 +1,163 @@
+<!--
+  Embrained - Neural Navigation Software Suite
+  Copyright (C) 2026 Embrained
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embrained | Beta Pilot — Buy a Plexus Robot</title>
+    <meta name="description" content="Join the Embrained Beta Pilot. Buy one of 5 hand-assembled Plexus robots and help build the first distributed lab for home navigation AI.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <a href="index.html">EMBRAINED</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Vision</a>
+            <a href="robot.html">Hardware & Software</a>
+            <a href="beta.html" class="active">Beta Pilot</a>
+            <a href="team.html">Team</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ANNOUNCEMENT -->
+        <section class="section section-white" style="padding-top: 2rem;">
+            <div class="container">
+                <h1>Beta Pilot</h1>
+                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; margin-bottom: 1.5rem;">
+                    Join an open-source project dedicated to unlocking true visual navigation intelligence on heavily constrained edge devices. The Plexus robot is our physical sandbox &mdash; a custom-built agent designed specifically to gather dataset transitions and execute neural policies in the real world.
+                </p>
+                <p>
+                    We are building this in public. That means you get access to our real progress and our real bottlenecks. We have successfully trained discrete neural controllers (via VQ-VAEs and offline CQL) that significantly outperform chance, but achieving fluid, continuous movement requires community scale. We are actively optimizing firmware latency, iterating on model architectures, and refining data collection protocols.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHAT YOU NEED -->
+        <section class="section section-blue">
+            <div class="container">
+                <h2>What You Need to Participate</h2>
+                
+                <div class="req-box" style="border-top: 4px solid var(--clr-blue);">
+                    <h3 style="color: var(--clr-blue);">1. A Plexus Robot ($199)</h3>
+                    <p>Each beta unit is hand-assembled and tested before shipping. The robot includes all hardware you need — just charge the batteries and connect to WiFi.</p>
+                    <div style="margin-top: 1rem;">
+                        <img src="images/plexus1.jpg" alt="The Plexus Robot" class="responsive-img" style="margin-bottom: 0; max-height: 300px; max-width: 50%; min-width: 250px; object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-purple);">
+                    <h3 style="color: var(--clr-purple);">2. A Clear Floor Space</h3>
+                    <p>Any open area in your home — a section of living room, a hallway, a corner of an office. About 1×1 meter minimum. The space should stay relatively consistent during your data collection (don't rearrange the furniture mid-experiment).</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                        <img src="images/arena1.jpg" alt="Example arena setup 1" class="responsive-img" style="flex: 1; min-width: 250px; margin-bottom: 0;">
+                        <img src="images/arena2.jpg" alt="Example arena setup 2" class="responsive-img" style="flex: 1; min-width: 250px; margin-bottom: 0;">
+                    </div>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-green);">
+                    <h3 style="color: var(--clr-green);">3. A Laptop with a GPU</h3>
+                    <p>You'll need a machine with an NVIDIA GPU (4-8 GB VRAM) to train models. Any modern gaming or ML laptop will work. An RTX 3060 or equivalent is ideal. The app itself runs in your browser.</p>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">4. Comfort with Python & Terminal</h3>
+                    <p>The training pipeline uses Python scripts run from the command line. You don't need to write code from scratch, but you should be comfortable running commands like <code>python scripts/train_vqvae.py</code> and installing dependencies with pip. We provide step-by-step instructions in our Discord.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW TO TRAIN -->
+        <section class="section section-orange">
+            <div class="container">
+                <h2>How to Train a Neural Navigator</h2>
+                <p>
+                    The process has five steps. Each one builds on the last.
+                </p>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">1. Collect Data</h3>
+                    <p>Drive your robot around the arena using WASD keys, or let it explore autonomously with a random-walk controller. The app records every camera frame paired with the motor command that produced it — building a dataset of visual transitions.</p>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">2. Prepare the Dataset</h3>
+                    <p>A single terminal command pools your raw recording sessions into a unified training set, resizing images and structuring transitions for efficient batch processing.</p>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">3. Train a Perception Model (VQ-VAE)</h3>
+                    <p>The first neural network learns to compress each camera frame into a compact code — a discrete "token" that captures the essential structure of what the robot sees. This is the robot's learned visual vocabulary of your space.</p>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">4. Train a Navigation Policy (CQL)</h3>
+                    <p>The second network learns which motor actions move the robot closer to a target location, using the perception tokens as input.</p>
+                </div>
+
+                <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
+                    <h3 style="color: var(--clr-orange);">5. Deploy & Watch</h3>
+                    <p>Load your trained model into the app's Autonomy Panel and press play. The robot drives itself. The dashboard shows you the AI's decisions in real time &mdash; where it thinks it is, where it's trying to go, and what action it's choosing. Built-in evaluation automatically tracks success rates across trials.</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- PURCHASE / JOIN -->
+        <section class="section section-white">
+            <div class="container" style="text-align: center; padding: 3rem 0;">
+                <h2>Join the Beta Pilot</h2>
+
+                
+                <!-- Shopify Buy Button placeholder -->
+                <div style="display: inline-block; padding: 2rem; border: 2px solid rgba(0,0,0,0.1); border-radius: 8px; background-color: rgba(0,0,0,0.02); margin-bottom: 1rem;">
+                    <h3 style="margin-top: 0; color: var(--clr-text-main);">Plexus Beta Unit - $199</h3>
+
+                    <a href="https://vl4pggu8vmfvigp3-75377017004.shopifypreview.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; display: inline-block; margin-top: 1rem;" target="_blank" rel="noopener">Buy on Shopify</a>
+                </div>
+                <br>
+                <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem; margin-top: 1rem;" target="_blank" rel="noopener">Join Our Discord</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom: 0.5rem;">&copy; 2026 Embrained, LLC</p>
+            <p style="font-size: 0.8rem; margin-bottom: 0;">
+                <a href="legal/Terms_of_Service.md" style="color: var(--clr-text-muted);">Terms of Service</a> &middot;
+                <a href="legal/Privacy_Policy.md" style="color: var(--clr-text-muted);">Privacy Policy</a> &middot;
+                <a href="legal/Return_Policy.md" style="color: var(--clr-text-muted);">Return Policy</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
