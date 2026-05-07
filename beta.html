@@ -53,7 +53,10 @@
                     Join an open-source project dedicated to unlocking true visual navigation intelligence on heavily constrained edge devices. The Plexus robot is our physical sandbox &mdash; a custom-built agent designed specifically to gather dataset transitions and execute neural policies in the real world.
                 </p>
                 <p>
-                    We are building this in public. That means you get access to our real progress and our real bottlenecks. We have successfully trained discrete neural controllers (via VQ-VAEs and offline CQL) that significantly outperform chance, but achieving fluid, continuous movement requires community scale. We are actively optimizing firmware latency, iterating on model architectures, and refining data collection protocols.
+                    We are building this in public. That means you get access to our real progress and our real bottlenecks. We have successfully conquered the latency challenge using discrete, stop-start neural controllers (via VQ-VAEs and offline CQL). To achieve fluid, uninterrupted autonomy, our next step is transitioning the platform to a <strong>Continuous Action Chunking</strong> architecture. Eventually, we will scale up to forward models and VLAs—but always under our core constraint: ensuring everything can be trained remotely on local hardware without ever uploading raw visual data.
+                </p>
+                <p>
+                    This leap requires community scale. By joining the beta, you will help us gather the continuous trajectory datasets needed to train these new fluid policies, while experimenting with the bleeding edge of embodied AI in your own living room.
                 </p>
             </div>
         </section>
@@ -103,6 +106,11 @@
                 <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
                     <h3 style="color: var(--clr-orange);">1. Collect Data</h3>
                     <p>Drive your robot around the arena using WASD keys, or let it explore autonomously with a random-walk controller. The app records every camera frame paired with the motor command that produced it — building a dataset of visual transitions.</p>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);">
+                            <source src="video/markov.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
 
                 <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
@@ -123,6 +131,11 @@
                 <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
                     <h3 style="color: var(--clr-orange);">5. Deploy & Watch</h3>
                     <p>Load your trained model into the app's Autonomy Panel and press play. The robot drives itself. The dashboard shows you the AI's decisions in real time &mdash; where it thinks it is, where it's trying to go, and what action it's choosing. Built-in evaluation automatically tracks success rates across trials.</p>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);">
+                            <source src="video/neural2.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,7 +152,7 @@
                 <div style="display: inline-block; padding: 2rem; border: 2px solid rgba(0,0,0,0.1); border-radius: 8px; background-color: rgba(0,0,0,0.02); margin-bottom: 1rem;">
                     <h3 style="margin-top: 0; color: var(--clr-text-main);">Plexus Beta Unit - $199</h3>
 
-                    <a href="https://vl4pggu8vmfvigp3-75377017004.shopifypreview.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; display: inline-block; margin-top: 1rem;" target="_blank" rel="noopener">Buy on Shopify</a>
+                    <a href="https://embrained-shop.myshopify.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; display: inline-block; margin-top: 1rem;" target="_blank" rel="noopener">Buy on Shopify</a>
                 </div>
                 <br>
                 <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" class="btn btn-secondary" style="font-size: 1.1rem; padding: 1rem 2rem; margin-top: 1rem;" target="_blank" rel="noopener">Join Our Discord</a>

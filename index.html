@@ -96,11 +96,28 @@
             <div class="container">
                 <h2>The Science Behind the Platform</h2>
                 <p>
-                    Visual navigation sits at the intersection of neuroscience, robotics, and machine learning. At its core, the system works like this: a <strong>Variational Autoencoder (VAE)</strong> compresses each camera frame into a compact mathematical representation — a "mental map" of what the robot has seen. A <strong>Conservative Q-Learning (CQL)</strong> policy then learns which motor actions move the robot closer to a target location in that map.
+                    We are solving one of the hardest problems in edge robotics: teaching a machine to navigate using only vision over a high-latency WiFi connection, without an onboard GPU. To keep the Plexus affordable and indefinite in lifespan, we offload all neural compute to your laptop. However, this introduces an unavoidable half-second delay between emitting a motor command and seeing its physical effect captured by the camera.
+                </p>
+                <p>
+                    <strong>Current Milestone: Discrete Goal Navigation</strong><br>
+                    Our first major breakthrough overcomes this latency by treating movement as a turn-based game (a discrete Markov Decision Process). A <strong>Variational Autoencoder (VAE)</strong> compresses stationary, blur-free camera frames into a compact "mental map", and a <strong>Conservative Q-Learning (CQL)</strong> policy selects the single best action to reach a goal. You can see this in action below: the robot successfully learns to navigate to specific targets using only its camera.
+                </p>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);">
+                        <source src="video/neural2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin-top: 0.5rem;">A fully autonomous Plexus navigating to a goal using a learned discrete VQ-VAE/CQL policy.</p>
+                </div>
+
+                <p>
+                    <strong>The Next Step: Continuous Action Chunking</strong><br>
+                    While mathematically elegant, the discrete approach results in clumsy, stop-start movement. To achieve the fluid, continuous navigation that humans use when teleoperating the robot, we are currently transitioning to a <strong>Continuous Action Chunking</strong> architecture. Instead of single moves, the policy learns to predict sequences of fluid motion primitives, overlapping them temporally to hide the network latency and keep the robot moving gracefully. Eventually, we will scale up to forward models and VLAs—but always under our core constraint: ensuring everything can be trained remotely on local hardware without ever uploading raw visual data.
                 </p>
 
                 <p>
-                    The deeper implications are profound. The same mathematical framework that lets a small robot learn to find your sofa connects directly to theories of biological navigation and intelligence. If you're a neuroscience researcher, a robotics student, or simply curious about how brains might work, the Plexus gives you a physical system to experiment with these ideas directly.
+                    By joining the Beta Pilot, you aren't just buying a toy—you are joining a distributed lab. You'll help us collect the continuous trajectory datasets required to train the next generation of fluid neural navigators.
                 </p>
             </div>
         </section>
