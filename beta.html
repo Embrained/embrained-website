@@ -88,8 +88,13 @@
                     <p>You'll need a machine with an NVIDIA GPU (4-8 GB VRAM) to train models. Any modern gaming or ML laptop will work. An RTX 3060 or equivalent is ideal. The app itself runs in your browser.</p>
                 </div>
 
+                <div class="req-box" style="border-top: 4px solid var(--clr-yellow);">
+                    <h3 style="color: var(--clr-yellow);">4. Isolated Software Sandbox</h3>
+                    <p>We provide automated setup scripts (<code>setup.bat</code> / <code>setup.sh</code>) to install all dependencies (Python 3.12, PyTorch, CUDA, Node.js) into a local, isolated environment to prevent conflicts with your machine's existing setup. The app boots via a simple <code>start.bat</code> script and runs fully locally.</p>
+                </div>
+
                 <div class="req-box" style="border-top: 4px solid var(--clr-orange);">
-                    <h3 style="color: var(--clr-orange);">4. Comfort with Python & Terminal</h3>
+                    <h3 style="color: var(--clr-orange);">5. Comfort with Python & Terminal</h3>
                     <p>The training pipeline uses Python scripts run from the command line. You don't need to write code from scratch, but you should be comfortable running commands like <code>python scripts/train_vqvae.py</code> and installing dependencies with pip. We provide step-by-step instructions in our Discord.</p>
                 </div>
             </div>
