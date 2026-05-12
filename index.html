@@ -21,8 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embrained | Train Your Own AI Robot at Home</title>
-    <meta name="description" content="Embrained builds affordable robots and open-source software that let you train neural navigation models on your own laptop GPU — right in your living room.">
+    <title>Embrained | Visual Semantic Navigation for Real Robots</title>
+    <meta name="description" content="Embrained is an open-source platform for teaching robots to navigate your home using vision and natural language — running entirely on your own GPU. No cloud. No subscription.">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,18 +48,20 @@
         <!-- HERO -->
         <section class="section section-white" style="padding-top: 2rem;">
             <div class="container">
-                <h1>Train Your Own AI Robot at Home</h1>
+                <h1>Teach a Robot to Understand Your Home</h1>
                 
                 <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
-                    Embrained makes affordable robots and open-source software that let you collect data, train neural networks, and watch your AI models drive a real robot around your living room — all using your own laptop GPU.
+                    <em>"Is there laundry on the living room floor?"</em><br>
+                    <em>"Go see if I left the front door open."</em><br>
+                    <em>"Find my keys."</em>
                 </p>
                 
                 <p>
-                    Our robot, the <strong>Plexus</strong>, is a camera on wheels that streams live video to your computer over WiFi. You drive it around to collect training data, run Python scripts to train perception and navigation models, then hand control back to the AI and see what it learned. The entire loop — data collection, training, and real-time inference — runs locally on your machine. No cloud. No subscription. No expensive hardware.
+                    Embrained is an open-source platform for <strong>visual semantic navigation</strong> — teaching a real robot to navigate your home by name, understand what it sees, and respond to natural language requests. The robot drives to locations it has learned, looks at the scene through its camera, and reports back in plain language.
                 </p>
 
                 <p>
-                    We are building this in public because visual navigation — teaching a robot to go somewhere using only what it sees — is one of the hardest unsolved problems in AI, and we believe the best way to crack it is together.
+                    Everything runs locally on your own laptop GPU. No cloud. No subscription. No internet required. Your camera data never leaves your machine.
                 </p>
 
                 <div style="text-align: center; margin: 2rem 0;">
@@ -73,34 +75,43 @@
             </div>
         </section>
 
-        <!-- WHY THIS MATTERS -->
+        <!-- THE ARCHITECTURE -->
         <section class="section section-purple">
             <div class="container">
-                <h2>Why This Matters</h2>
+                <h2>Three Layers, One Robot</h2>
                 <p>
-                    Imagine telling a robot "go to the TV, or go to the kitchen" and having it navigate there on its own, using nothing but a camera. No lidar, no pre-built map, no thousand-dollar GPU bolted to its back. Just vision — the way animals do it.
+                    Visual semantic navigation requires three capabilities running at completely different speeds. Our <strong>disaggregated intelligence</strong> architecture runs all three on your PC — the robot is a thin sensor/actuator relay over WiFi.
                 </p>
-                <p>
-                    That capability doesn't exist yet. State-of-the-art navigation robots cost thousands of dollars, require onboard GPUs, and are trained in controlled labs. Embrained takes the opposite approach: we use an <strong>affordable robot</strong> with no onboard compute, stream its camera feed to your laptop, and let you train the brain yourself. The result is an open research platform where anyone with a mid-range GPU can run real embodied AI experiments at home.
-                </p>
-
-                <div style="text-align: center; margin: 2rem 0;">
-                    <img src="images/plexus2.jpg" alt="The Plexus Robot" style="max-width: 100%; height: auto; border-radius: 8px;">
+                
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Language Planner</h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs once per command (~2–5 seconds)</p>
+                    <p>Decomposes a natural language request into a task sequence. <em>"Go see if I left the front door open"</em> becomes: navigate to "front door" → observe "is it open?" → report answer. For v1 this uses pattern matching; future versions can use the same local VLM for richer decomposition.</p>
                 </div>
-
+                
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Navigation Engine</h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs at 10Hz, continuous closed-loop control</p>
+                    <p>This is the Cognitive Engine — the core that already works. A VQ-VAE compresses camera frames into a learned spatial manifold. A CQL policy selects actions to drive toward a goal. Users label manifold regions with semantic names ("kitchen", "front door"), and the planner maps location names to goal latents. The existing navigation loop handles the rest.</p>
+                </div>
+                
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Scene Oracle</h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs on-demand (~1–3 seconds per query)</p>
+                    <p>A local Vision-Language Model (Moondream or Gemma 3) running on your GPU. It receives the current camera frame — already on your PC from the WiFi stream — and answers questions about what it sees. No cloud API, no per-query cost. The VLM doesn't touch the navigation loop; it fires once when the robot arrives at its destination.</p>
+                </div>
             </div>
         </section>
 
-        <!-- THE SCIENCE -->
+        <!-- THE FOUNDATION -->
         <section class="section section-green">
             <div class="container">
-                <h2>The Science Behind the Platform</h2>
+                <h2>The Hard Part Is Already Done</h2>
                 <p>
-                    We are solving one of the hardest problems in edge robotics: teaching a machine to navigate using only vision over a high-latency WiFi connection, without an onboard GPU. To keep the Plexus affordable and indefinite in lifespan, we offload all neural compute to your laptop. However, this introduces an unavoidable half-second delay between emitting a motor command and seeing its physical effect captured by the camera.
+                    The VLM and language planner are commodity technology — <code>pip install moondream</code>, pass it a frame, get an answer. What's hard is the <strong>navigation</strong>: teaching a robot to reliably drive from point A to point B in a real home, using only a camera and cheap motors, with no encoders, no LiDAR, and no odometry.
                 </p>
                 <p>
-                    <strong>Current Milestone: Discrete Goal Navigation</strong><br>
-                    Our first major breakthrough overcomes this latency by treating movement as a turn-based game (a discrete Markov Decision Process). A <strong>Variational Autoencoder (VAE)</strong> compresses stationary, blur-free camera frames into a compact "mental map", and a <strong>Conservative Q-Learning (CQL)</strong> policy selects the single best action to reach a goal. You can see this in action below: the robot successfully learns to navigate to specific targets using only its camera.
+                    That's what the Cognitive Engine does, and it already works. You can see it in action below — a fully autonomous Plexus navigating to a goal using a learned discrete VQ-VAE/CQL policy.
                 </p>
                 
                 <div style="text-align: center; margin: 2rem 0;">
@@ -112,12 +123,35 @@
                 </div>
 
                 <p>
-                    <strong>The Next Step: Continuous Action Chunking</strong><br>
-                    While mathematically elegant, the discrete approach results in clumsy, stop-start movement. To achieve the fluid, continuous navigation that humans use when teleoperating the robot, we are currently transitioning to a <strong>Continuous Action Chunking</strong> architecture. Instead of single moves, the policy learns to predict sequences of fluid motion primitives, overlapping them temporally to hide the network latency and keep the robot moving gracefully. Eventually, we will scale up to forward models and VLAs—but always under our core constraint: ensuring everything can be trained remotely on local hardware without ever uploading raw visual data.
+                    Adding scene understanding on top — <em>"is the door open?"</em> — is furniture. The navigation is the load-bearing wall. Everything else plugs into infrastructure that's already built.
                 </p>
+            </div>
+        </section>
+
+        <!-- WHY THIS DOESN'T EXIST YET -->
+        <section class="section section-orange">
+            <div class="container">
+                <h2>Why Nobody Else Can Do This</h2>
 
                 <p>
-                    By joining the Beta Pilot, you aren't just buying a toy—you are joining a distributed lab. You'll help us collect the continuous trajectory datasets required to train the next generation of fluid neural navigators.
+                    A $199 robot that navigates to named locations using a learned policy and answers natural language questions about what it sees — running entirely on the user's own GPU with zero cloud dependency. That doesn't exist yet.
+                </p>
+
+                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
+                    <h3 style="color: var(--clr-orange);">Consumer Robots (Loona, Enabot)</h3>
+                    <p style="margin-bottom: 0;">Cloud-dependent, no learned navigation, gets stuck in clutter, can't navigate to named locations. $400+.</p>
+                </div>
+                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
+                    <h3 style="color: var(--clr-orange);">Educational Kits (PiCar-X, Raspbot)</h3>
+                    <p style="margin-bottom: 0;">Open hardware, but ships with nothing beyond line-following scripts. A bag of parts and a screwdriver. No neural network integration, no training pipeline, no path to real AI. ~$220.</p>
+                </div>
+                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
+                    <h3 style="color: var(--clr-orange);">Research Platforms (TurtleBot 4, LIMO)</h3>
+                    <p style="margin-bottom: 0;">Fully capable ROS 2 platforms with LiDAR and depth cameras. But $1,200–$3,700 and no integrated VLM scene understanding.</p>
+                </div>
+
+                <p style="margin-top: 2rem;">
+                    A Plexus buyer gets an assembled robot, a one-line setup script, and immediate access to the full Cognitive Engine — teleop data collection, VAE training, CQL policy learning, Markov exploration, Patrol mode, a live dashboard with latent space visualization, and a scoreboard. When we add the VLM layer, they'll also get a robot that can answer questions about what it sees — all running locally.
                 </p>
             </div>
         </section>
@@ -127,13 +161,11 @@
             <div class="container">
                 <h2>Your Data Stays Home</h2>
                 <p>
-                    Every image your robot captures stays on your local network. Training runs on your GPU. Nothing is uploaded to our servers.
+                    Every image your robot captures stays on your local network. Training runs on your GPU. VLM inference runs on your GPU. Nothing is uploaded to our servers — not your camera frames, not your navigation data, not your questions.
                 </p>
                 <p>
-                    When you're ready to contribute to the community, you share only the trained model weights — compact mathematical tensors that contain no recognizable imagery of your home. This privacy-preserving approach lets us build increasingly capable "master models" across many environments without any single user's raw data ever leaving their machine.
+                    When you're ready to contribute to the community, you share only the trained model weights — compact mathematical tensors that contain no recognizable imagery of your home. This privacy-preserving approach lets us build increasingly capable models across many environments without any single user's raw data ever leaving their machine.
                 </p>
-
-
             </div>
         </section>
 
@@ -142,7 +174,7 @@
             <div class="container" style="text-align: center;">
                 <h2>Join the Experiment</h2>
                 <p style="max-width: 600px; margin: 0 auto 2rem auto;">
-                    We're shipping our first beta units now. If you're an AI enthusiast, robotics hobbyist, or developer who wants to help build the first distributed lab for home navigation AI, we'd love to have you as a beta pilot.
+                    We're shipping our first beta units now. If you want to help build the first affordable robot that understands natural language and navigates real homes — entirely on local hardware — we'd love to have you.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
                     <a href="beta.html" class="btn">Get a Beta Unit</a>

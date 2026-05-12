@@ -21,8 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embrained | The Plexus Robot & Software Suite</title>
-    <meta name="description" content="The Plexus robot streams live camera data to your laptop over WiFi. The Embrained app lets you drive, record, train, and deploy neural navigation models — all locally.">
+    <title>Embrained | The Plexus Robot & Cognitive Engine</title>
+    <meta name="description" content="The Plexus is a camera on wheels. The Cognitive Engine is the brain on your laptop. Together they form the only affordable platform for training and deploying learned visual navigation — and soon, semantic navigation with natural language.">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,10 @@
             <div class="container">
                 <h1>Hardware & Software</h1>
                 <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
-                    The Plexus is an affordable robot that turns your laptop into an embodied AI research station. The Embrained app is the control center that ties it all together.
+                    Nobody is buying Plexus for the hardware. They're buying it because when they open the box, they can train a neural navigation model in 5 minutes.
+                </p>
+                <p>
+                    The Plexus is a camera on wheels — deliberately simple, deliberately cheap. The real product is the <strong>Cognitive Engine</strong>: the full-stack software platform that turns camera frames into learned navigation behavior, running entirely on your own laptop GPU.
                 </p>
             </div>
         </section>
@@ -104,35 +107,66 @@
         <!-- SOFTWARE -->
         <section class="section section-yellow">
             <div class="container">
-                <h2>The Software Suite</h2>
+                <h2>The Cognitive Engine</h2>
                 <p>
-                    The Embrained app is a browser-based dashboard that runs locally on your machine. It connects to your Plexus over WiFi and gives you everything you need in one interface: live camera feed, manual driving controls, data recording, model deployment, and real-time analytics.
+                    The Embrained app is a browser-based dashboard that runs locally on your machine. It connects to your Plexus over WiFi and gives you everything you need in one interface: live camera feed, manual driving controls, data recording, model training, autonomous deployment, and real-time latent space visualization.
                 </p>
                 <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                    <img src="images/software1.png" alt="The Embrained Live Mode dashboard showing camera feed, latent space visualization, and autonomy controls — with color-coded functional zones." class="responsive-img" style="margin-bottom: 0; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
+                    <img src="images/software1.png" alt="The Embrained Live Mode dashboard showing camera feed, latent space visualization, and autonomy controls." class="responsive-img" style="margin-bottom: 0; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px;">
                 </div>
 
                 <div class="req-box" style="margin-top: 2rem; border-color: rgba(202, 138, 4, 0.3);">
                     <h3 style="color: var(--clr-yellow);">Drive & Record</h3>
-                    <p>Use WASD keys to drive the robot manually through your space while the app automatically logs camera frames, motor commands, and sensor data into structured datasets. You can also let the robot explore autonomously using our built-in continuous spline generators to gather fluid Action Chunking data.</p>
+                    <p>Use WASD keys to drive the robot through your space. The app automatically logs camera frames, motor commands, and sensor data into structured datasets. Built-in autonomous exploration modes can also generate training data without manual input.</p>
                 </div>
 
                 <div class="req-box" style="border-color: rgba(202, 138, 4, 0.3);">
-                    <h3 style="color: var(--clr-yellow);">Train (Terminal Scripts)</h3>
-                    <p>Once you've collected data, you run Python scripts from the terminal to train your models. The pipeline includes:</p>
+                    <h3 style="color: var(--clr-yellow);">Train</h3>
+                    <p>Run Python scripts to train your models locally:</p>
                     <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--clr-text-muted);">
-                        <li style="margin-bottom: 0.5rem;"><strong>Dataset Preparation</strong> — Pool raw recordings into a unified training set</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Perception Model (VQ-VAE)</strong> — Learn a compressed visual representation of your environment</li>
-                        <li><strong>Navigation Policy (CQL)</strong> — Learn which actions move the robot toward a goal location</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Perception (VQ-VAE)</strong> — Learn a compressed visual representation of your environment</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Navigation (CQL)</strong> — Learn which actions move the robot toward a goal location</li>
+                        <li><strong>Coming soon: Scene Understanding (VLM)</strong> — A local Vision-Language Model that answers questions about what the robot sees</li>
                     </ul>
-                    <p style="margin-top: 1rem;">All training runs locally on your GPU. A mid-range laptop (4-8GB VRAM) is sufficient.</p>
-
+                    <p style="margin-top: 1rem;">All training and inference runs locally on your GPU. A mid-range laptop (4-8GB VRAM) is sufficient.</p>
                 </div>
 
                 <div class="req-box" style="border-color: rgba(202, 138, 4, 0.3);">
                     <h3 style="color: var(--clr-yellow);">Deploy & Evaluate</h3>
-                    <p>Load your trained model into the app and hand control of the robot to the AI. The dashboard shows you in real time what the model is "thinking" — its latent space position, the goal it's aiming for, and the motor commands it's choosing. Built-in evaluation tools automatically score success rates across repeated trials.</p>
+                    <p>Load your trained model and hand control to the AI. The dashboard shows the model's latent space position, its goal, and the motor commands it's choosing — in real time. Built-in evaluation tools automatically score navigation success across repeated trials.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- WHY PLEXUS -->
+        <section class="section section-purple">
+            <div class="container">
+                <h2>Why Plexus?</h2>
+                <p>
+                    You cannot buy a sleek, affordable, natively open-source robot designed to pipe video directly into a neural network. The closest comparisons are PiCar-X (~$220) and Yahboom Raspbot. But buying one gets you a bag of parts, a screwdriver, and a link to some OpenCV line-following scripts.
+                </p>
+                <p>
+                    A Plexus buyer gets: an assembled robot, a one-line setup script, and immediate access to the full Cognitive Engine — teleop data collection, VAE training, CQL policy learning, Markov exploration, Patrol mode, a live dashboard with latent space visualization, and a scoreboard.
+                </p>
+                <p>
+                    Plexus hardware is comparable to a PiCar-X or Raspbot in raw capability — cheap motors, a single camera, no encoders, no LiDAR. And that's fine, because the hardware is a means to an end. The end is a robot that understands your home — and soon, one that responds to what you ask it.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHERE WE'RE GOING -->
+        <section class="section section-blue">
+            <div class="container">
+                <h2>Where We're Going</h2>
+                <p>
+                    The navigation engine is the foundation. The next layer is <strong>visual semantic navigation</strong> — teaching the robot to respond to natural language commands like <em>"Is there laundry on the living room floor?"</em> or <em>"Go see if I left the front door open."</em>
+                </p>
+                <p>
+                    This requires a local Vision-Language Model running on your GPU alongside the Cognitive Engine. The robot navigates to a named location using its learned policy, observes the scene through its camera, and the VLM interprets what it sees — all without touching the cloud.
+                </p>
+                <p>
+                    The navigation — the hard part — is already done. The language understanding is commodity technology that plugs into the infrastructure we've already built.
+                </p>
             </div>
         </section>
 
@@ -141,7 +175,7 @@
             <div class="container" style="text-align: center;">
                 <h2>Join the Experiment</h2>
                 <p style="max-width: 600px; margin: 0 auto 2rem auto;">
-                    Skip the soldering and 3D printing. Get a fully assembled Plexus robot and start training physical AI models in your living room today. We're shipping our first beta units now.
+                    Start running experiments immediately — no hardware assembly, no custom drivers, no boilerplate. Get a Plexus R&D Kit and go from unboxing to training your first neural navigator in a single session.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
                     <a href="beta.html" class="btn">Get a Beta Unit</a>
