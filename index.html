@@ -21,8 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embrained | Visual Semantic Navigation for Real Robots</title>
-    <meta name="description" content="Embrained is an open-source platform for teaching robots to navigate your home using vision and natural language — running entirely on your own GPU. No cloud. No subscription.">
+    <title>Embrained | The Open Platform for Neural Robot Navigation</title>
+    <meta name="description" content="Embrained is an open-source platform for training and deploying neural navigation models on real robotic hardware — using your own laptop GPU. No cloud. No subscription.">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,16 +48,14 @@
         <!-- HERO -->
         <section class="section section-white" style="padding-top: 2rem;">
             <div class="container">
-                <h1>Teach a Robot to Understand Your Home</h1>
+                <h1>Teach a Robot to Navigate Your Home</h1>
                 
                 <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
-                    <em>"Is there laundry on the living room floor?"</em><br>
-                    <em>"Go see if I left the front door open."</em><br>
-                    <em>"Find my keys."</em>
+                    Embrained is an open-source platform for training and deploying neural navigation models on real robotic hardware — using your own laptop GPU.
                 </p>
                 
                 <p>
-                    Embrained is an open-source platform for <strong>visual semantic navigation</strong> — teaching a real robot to navigate your home by name, understand what it sees, and respond to natural language requests. The robot drives to locations it has learned, looks at the scene through its camera, and reports back in plain language.
+                    Our robot, the <strong>Plexus</strong>, is a camera on wheels that streams live video to your computer over WiFi. You drive it around to collect training data, run Python scripts to train perception and navigation models, then hand control back to the AI and watch what it learned. Today, the Cognitive Engine handles the full loop: data collection, VAE training, CQL policy learning, and real-time autonomous deployment.
                 </p>
 
                 <p>
@@ -75,43 +73,12 @@
             </div>
         </section>
 
-        <!-- THE ARCHITECTURE -->
-        <section class="section section-purple">
-            <div class="container">
-                <h2>Three Layers, One Robot</h2>
-                <p>
-                    Visual semantic navigation requires three capabilities running at completely different speeds. Our <strong>disaggregated intelligence</strong> architecture runs all three on your PC — the robot is a thin sensor/actuator relay over WiFi.
-                </p>
-                
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Language Planner</h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs once per command (~2–5 seconds)</p>
-                    <p>Decomposes a natural language request into a task sequence. <em>"Go see if I left the front door open"</em> becomes: navigate to "front door" → observe "is it open?" → report answer. For v1 this uses pattern matching; future versions can use the same local VLM for richer decomposition.</p>
-                </div>
-                
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Navigation Engine</h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs at 10Hz, continuous closed-loop control</p>
-                    <p>This is the Cognitive Engine — the core that already works. A VQ-VAE compresses camera frames into a learned spatial manifold. A CQL policy selects actions to drive toward a goal. Users label manifold regions with semantic names ("kitchen", "front door"), and the planner maps location names to goal latents. The existing navigation loop handles the rest.</p>
-                </div>
-                
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Scene Oracle</h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs on-demand (~1–3 seconds per query)</p>
-                    <p>A local Vision-Language Model (Moondream or Gemma 3) running on your GPU. It receives the current camera frame — already on your PC from the WiFi stream — and answers questions about what it sees. No cloud API, no per-query cost. The VLM doesn't touch the navigation loop; it fires once when the robot arrives at its destination.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- THE FOUNDATION -->
+        <!-- WHAT WORKS TODAY -->
         <section class="section section-green">
             <div class="container">
-                <h2>The Hard Part Is Already Done</h2>
+                <h2>What Works Today</h2>
                 <p>
-                    The VLM and language planner are commodity technology — <code>pip install moondream</code>, pass it a frame, get an answer. What's hard is the <strong>navigation</strong>: teaching a robot to reliably drive from point A to point B in a real home, using only a camera and cheap motors, with no encoders, no LiDAR, and no odometry.
-                </p>
-                <p>
-                    That's what the Cognitive Engine does, and it already works. You can see it in action below — a fully autonomous Plexus navigating to a goal using a learned discrete VQ-VAE/CQL policy.
+                    The Cognitive Engine handles the hardest part of the problem: teaching a robot to navigate reliably using only a camera and cheap motors, with no encoders, no LiDAR, and no odometry. A VQ-VAE compresses camera frames into a learned spatial manifold. A CQL policy selects actions to drive toward a goal. The robot navigates autonomously in real homes.
                 </p>
                 
                 <div style="text-align: center; margin: 2rem 0;">
@@ -119,11 +86,53 @@
                         <source src="video/neural2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin-top: 0.5rem;">A fully autonomous Plexus navigating to a goal using a learned discrete VQ-VAE/CQL policy.</p>
+                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin-top: 0.5rem;">A fully autonomous Plexus navigating to a goal using a learned VQ-VAE/CQL policy.</p>
                 </div>
 
                 <p>
-                    Adding scene understanding on top — <em>"is the door open?"</em> — is furniture. The navigation is the load-bearing wall. Everything else plugs into infrastructure that's already built.
+                    Out of the box, you get the full pipeline: teleop data collection, VAE training, CQL policy learning, Markov exploration, Patrol mode, a live dashboard with latent space visualization, and a scoreboard for evaluating model performance. All running locally on your GPU.
+                </p>
+            </div>
+        </section>
+
+        <!-- WHERE WE'RE GOING -->
+        <section class="section section-purple">
+            <div class="container">
+                <h2>Where We're Going</h2>
+                <p>
+                    The navigation engine is the foundation. The next layer we're building is <strong>visual semantic navigation</strong> — making the robot respond to natural language commands:
+                </p>
+
+                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.1rem; font-style: italic; text-align: center; margin: 1.5rem 0;">
+                    "Is there laundry on the living room floor?"<br>
+                    "Go see if I left the front door open."<br>
+                    "Find my keys."
+                </p>
+
+                <p>
+                    This will require three layers running at different speeds on your PC — the robot stays a thin sensor/actuator relay:
+                </p>
+                
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Navigation Engine <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-green);">✓ Live today</span></h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">10Hz closed-loop control</p>
+                    <p>The Cognitive Engine — the core that already works. A VQ-VAE compresses camera frames into a learned spatial manifold and a CQL policy selects actions to drive toward a goal. This is the hard part, and it's done.</p>
+                </div>
+                
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Scene Oracle <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-text-muted);">— Coming soon</span></h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">On-demand (~1–3 seconds per query)</p>
+                    <p>A local Vision-Language Model (Moondream or Gemma 3) will run on your GPU alongside the navigation engine. The camera frame is already on your PC from the WiFi stream — the VLM will simply answer questions about what it sees. No cloud API, no per-query cost.</p>
+                </div>
+
+                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
+                    <h3 style="color: var(--clr-purple);">Language Planner <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-text-muted);">— Coming soon</span></h3>
+                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs once per command</p>
+                    <p>Will decompose natural language requests into navigation goals and observation tasks. <em>"Go check the front door"</em> becomes: navigate to "front door" → observe "is it open?" → report answer.</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;">
+                    The architecture for this is already in place. Because everything runs on the user's PC, adding a VLM is just another GPU process alongside the Cognitive Engine — no hardware changes, no cloud dependency.
                 </p>
             </div>
         </section>
@@ -134,7 +143,7 @@
                 <h2>Why Nobody Else Can Do This</h2>
 
                 <p>
-                    A $199 robot that navigates to named locations using a learned policy and answers natural language questions about what it sees — running entirely on the user's own GPU with zero cloud dependency. That doesn't exist yet.
+                    An affordable robot that learns to navigate real homes using only a camera — with a full training pipeline included out of the box. That doesn't exist yet.
                 </p>
 
                 <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
@@ -147,7 +156,7 @@
                 </div>
                 <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
                     <h3 style="color: var(--clr-orange);">Research Platforms (TurtleBot 4, LIMO)</h3>
-                    <p style="margin-bottom: 0;">Fully capable ROS 2 platforms with LiDAR and depth cameras. But $1,200–$3,700 and no integrated VLM scene understanding.</p>
+                    <p style="margin-bottom: 0;">Capable open ROS 2 platforms with LiDAR and depth cameras. But $1,200–$3,700+, require expert setup, and offer no integrated train-from-your-home pipeline.</p>
                 </div>
 
                 <p style="margin-top: 2rem;">
@@ -161,7 +170,7 @@
             <div class="container">
                 <h2>Your Data Stays Home</h2>
                 <p>
-                    Every image your robot captures stays on your local network. Training runs on your GPU. VLM inference runs on your GPU. Nothing is uploaded to our servers — not your camera frames, not your navigation data, not your questions.
+                    Every image your robot captures stays on your local network. Training runs on your GPU. Nothing is uploaded to our servers.
                 </p>
                 <p>
                     When you're ready to contribute to the community, you share only the trained model weights — compact mathematical tensors that contain no recognizable imagery of your home. This privacy-preserving approach lets us build increasingly capable models across many environments without any single user's raw data ever leaving their machine.
@@ -174,7 +183,7 @@
             <div class="container" style="text-align: center;">
                 <h2>Join the Experiment</h2>
                 <p style="max-width: 600px; margin: 0 auto 2rem auto;">
-                    We're shipping our first beta units now. If you want to help build the first affordable robot that understands natural language and navigates real homes — entirely on local hardware — we'd love to have you.
+                    We're shipping our first beta units now. If you're an AI enthusiast, robotics hobbyist, or developer who wants to train and deploy real neural navigation models on affordable hardware, we'd love to have you as a beta pilot.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
                     <a href="beta.html" class="btn">Get a Beta Unit</a>
