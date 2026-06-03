@@ -21,8 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embrained | The Open Platform for Neural Robot Navigation</title>
-    <meta name="description" content="Embrained is an open-source platform for training and deploying neural navigation models on real robotic hardware — using your own laptop GPU. No cloud. No subscription.">
+    <title>Embrained | Neural Robot Navigation</title>
+    <meta name="description" content="An open-source robot that learns to navigate your home using only a camera and a neural network on your laptop. No LiDAR. No cloud.">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,156 +37,120 @@
             <a href="index.html">EMBRAINED</a>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="active">Vision</a>
-            <a href="robot.html">Hardware & Software</a>
-            <a href="beta.html">Beta Pilot</a>
+            <a href="index.html" class="active">Home</a>
             <a href="team.html">Team</a>
+            <a href="https://github.com/Embrained/embrained-app" target="_blank" rel="noopener">GitHub</a>
         </div>
     </nav>
 
     <main>
         <!-- HERO -->
-        <section class="section section-white" style="padding-top: 2rem;">
+        <section class="hero section section-white" style="padding-top: 2rem;">
             <div class="container">
-                <h1>Teach a Robot to Navigate Your Home</h1>
-                
-                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem;">
-                    Embrained is an open-source platform for training and deploying neural navigation models on real robotic hardware — using your own laptop GPU.
-                </p>
-                
-                <p>
-                    Our robot, the <strong>Plexus</strong>, is a camera on wheels that streams live video to your computer over WiFi. You drive it around to collect training data, run Python scripts to train perception and navigation models, then hand control back to the AI and watch what it learned. Today, the Cognitive Engine handles the full loop: data collection, VAE training, CQL policy learning, and real-time autonomous deployment.
+                <h1>A robot that learns to navigate your home using only what it sees.</h1>
+
+                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.15rem;">
+                    No LiDAR. No odometry. No GPS. No cloud. Just a camera and a neural network running on your laptop.
                 </p>
 
-                <p>
-                    Everything runs locally on your own laptop GPU. No cloud. No subscription. No internet required. Your camera data never leaves your machine.
-                </p>
-
-                <div style="text-align: center; margin: 2rem 0;">
-                    <img src="images/hero_schematic.png" alt="Embrained Data and Training Pipeline Schematic" style="max-width: 100%; height: auto; border-radius: 8px;">
-                </div>
-                
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
-                    <a href="robot.html" class="btn btn-secondary">How It Works</a>
-                    <a href="beta.html" class="btn">Get a Beta Unit</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT WORKS TODAY -->
-        <section class="section section-green">
-            <div class="container">
-                <h2>What Works Today</h2>
-                <p>
-                    The Cognitive Engine handles the hardest part of the problem: teaching a robot to navigate reliably using only a camera and cheap motors, with no encoders, no LiDAR, and no odometry. A VQ-VAE compresses camera frames into a learned spatial manifold. A CQL policy selects actions to drive toward a goal. The robot navigates autonomously in real homes.
-                </p>
-                
-                <div style="text-align: center; margin: 2rem 0;">
-                    <video autoplay loop muted playsinline style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1);">
+                <div class="hero-video-wrap" id="demo">
+                    <video autoplay loop muted playsinline>
                         <source src="video/neural2.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p style="font-size: 0.9rem; color: var(--clr-text-muted); margin-top: 0.5rem;">A fully autonomous Plexus navigating to a goal using a learned VQ-VAE/CQL policy.</p>
                 </div>
+                <p class="hero-caption">Fully autonomous navigation to a goal — learned VQ-VAE perception, CQL policy, zero hand-coded control.</p>
 
-                <p>
-                    Out of the box, you get the full pipeline: teleop data collection, VAE training, CQL policy learning, Markov exploration, Patrol mode, a live dashboard with latent space visualization, and a scoreboard for evaluating model performance. All running locally on your GPU.
-                </p>
+                <div class="hero-ctas">
+                    <a href="https://github.com/Embrained/embrained-app" class="btn btn-secondary" target="_blank" rel="noopener">View Source</a>
+                    <a href="https://embrained-shop.myshopify.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
+                </div>
             </div>
         </section>
 
-        <!-- WHERE WE'RE GOING -->
-        <section class="section section-purple">
+        <!-- DISAGGREGATED INTELLIGENCE -->
+        <section class="section section-purple reveal">
             <div class="container">
-                <h2>Where We're Going</h2>
+                <h2>Disaggregated Intelligence</h2>
                 <p>
-                    The navigation engine is the foundation. The next layer we're building is <strong>visual semantic navigation</strong> — making the robot respond to natural language commands:
+                    The robot is a thin sensor/actuator relay — a camera, two motors, and a WiFi radio. All cognition runs on your laptop GPU. This decoupling means the robot never becomes obsolete: when better models exist, you update software, not hardware.
                 </p>
 
-                <p style="font-weight: 600; color: var(--clr-text-main); font-size: 1.1rem; font-style: italic; text-align: center; margin: 1.5rem 0;">
-                    "Is there laundry on the living room floor?"<br>
-                    "Go see if I left the front door open."<br>
-                    "Find my keys."
-                </p>
-
-                <p>
-                    This will require three layers running at different speeds on your PC — the robot stays a thin sensor/actuator relay:
-                </p>
-                
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Navigation Engine <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-green);">✓ Live today</span></h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">10Hz closed-loop control</p>
-                    <p>The Cognitive Engine — the core that already works. A VQ-VAE compresses camera frames into a learned spatial manifold and a CQL policy selects actions to drive toward a goal. This is the hard part, and it's done.</p>
-                </div>
-                
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Scene Oracle <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-text-muted);">— Coming soon</span></h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">On-demand (~1–3 seconds per query)</p>
-                    <p>A local Vision-Language Model (Moondream or Gemma 3) will run on your GPU alongside the navigation engine. The camera frame is already on your PC from the WiFi stream — the VLM will simply answer questions about what it sees. No cloud API, no per-query cost.</p>
+                <div class="arch-diagram">
+                    <div class="arch-node arch-node-robot">
+                        <h3>The Robot</h3>
+                        <p>Camera · Motors · WiFi</p>
+                    </div>
+                    <div class="arch-arrow">
+                        <div class="arch-arrow-line"></div>
+                        <span>WiFi</span>
+                    </div>
+                    <div class="arch-node arch-node-laptop">
+                        <h3>Your Laptop</h3>
+                        <p>VQ-VAE Perception · CQL Policy · GPU Inference</p>
+                    </div>
                 </div>
 
-                <div class="req-box" style="border-color: rgba(126, 34, 206, 0.3);">
-                    <h3 style="color: var(--clr-purple);">Language Planner <span style="font-size: 0.8rem; font-weight: 500; color: var(--clr-text-muted);">— Coming soon</span></h3>
-                    <p style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--clr-text-muted); font-style: italic;">Runs once per command</p>
-                    <p>Will decompose natural language requests into navigation goals and observation tasks. <em>"Go check the front door"</em> becomes: navigate to "front door" → observe "is it open?" → report answer.</p>
-                </div>
-
-                <p style="margin-top: 1.5rem;">
-                    The architecture for this is already in place. Because everything runs on the user's PC, adding a VLM is just another GPU process alongside the Cognitive Engine — no hardware changes, no cloud dependency.
+                <p class="arch-insight">
+                    The robot is a sensor relay. Your laptop is the brain. Neural network complexity has no ceiling.
                 </p>
             </div>
         </section>
 
-        <!-- WHY THIS DOESN'T EXIST YET -->
-        <section class="section section-orange">
+        <!-- HOW IT WORKS -->
+        <section class="section section-green reveal">
             <div class="container">
-                <h2>Why Nobody Else Can Do This</h2>
+                <h2>From Neural Circuits to Neural Networks</h2>
 
-                <p>
-                    An affordable robot that learns to navigate real homes using only a camera — with a full training pipeline included out of the box. That doesn't exist yet.
-                </p>
-
-                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
-                    <h3 style="color: var(--clr-orange);">Consumer Robots (Loona, Enabot)</h3>
-                    <p style="margin-bottom: 0;">Cloud-dependent, no learned navigation, can't navigate to named locations. $400+.</p>
-                </div>
-                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
-                    <h3 style="color: var(--clr-orange);">Educational Kits (PiCar-X, Raspbot)</h3>
-                    <p style="margin-bottom: 0;">Open hardware, but ships with nothing beyond line-following scripts. A bag of parts and a screwdriver. No neural network integration, no training pipeline, no path to real AI. ~$220.</p>
-                </div>
-                <div class="req-box" style="border-color: rgba(234, 88, 12, 0.3);">
-                    <h3 style="color: var(--clr-orange);">Research Platforms (TurtleBot 4, LIMO)</h3>
-                    <p style="margin-bottom: 0;">Capable open platforms with LiDAR and depth cameras. But $1,200–$3,700+, require expert setup, and offer no integrated train-from-your-home pipeline.</p>
+                <div class="neuro-cards" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="neuro-card">
+                        <h3>Perception — VQ-VAE</h3>
+                        <p>A Vector-Quantized Variational Autoencoder compresses each camera frame into a discrete codebook vector — a compact spatial token that captures both where the robot is and which way it's facing. These learned codes are an engineering analog of place cells and head direction cells working together: biological neurons that fire for specific combinations of position and orientation, compressing rich sensory input into a small set of discrete spatial representations.</p>
+                    </div>
+                    <div class="neuro-card">
+                        <h3>Action — Policy Network</h3>
+                        <p>A Conservative Q-Learning policy takes the current spatial token and a goal token as input and selects the motor action most likely to move the robot toward its target. This is reward-driven action selection — the same fundamental computation that biological neural circuits use to adapt behavior in response to outcomes, learned offline from previously collected experience.</p>
+                    </div>
                 </div>
 
-                <p style="margin-top: 2rem;">
-                    A Plexus buyer gets an assembled robot, a one-line setup script, and immediate access to the full Cognitive Engine — teleop data collection, VAE training, CQL policy learning, Markov exploration, Patrol mode, a live dashboard with latent space visualization, and a scoreboard. When we add the VLM layer, they'll also get a robot that can answer questions about what it sees — all running locally.
+                <p class="neuro-closing">
+                    Together, these two networks close the sensorimotor loop: see, encode, decide, act. No hand-coded rules. No LiDAR. No odometry. Just learned spatial representations and learned goal-directed behavior.
                 </p>
             </div>
         </section>
 
-        <!-- PRIVACY -->
-        <section class="section section-blue">
+        <!-- WHAT SHIPS -->
+        <section class="section section-orange reveal">
             <div class="container">
-                <h2>Your Data Stays Home</h2>
-                <p>
-                    Every image your robot captures stays on your local network. Training runs on your GPU. Nothing is uploaded to our servers.
-                </p>
-                <p>
-                    When you're ready to contribute to the community, you share only the trained model weights — compact mathematical tensors that contain no recognizable imagery of your home. This privacy-preserving approach lets us build increasingly capable models across many environments without any single user's raw data ever leaving their machine.
-                </p>
-            </div>
-        </section>
+                <h2>What Ships</h2>
 
-        <!-- CTA -->
-        <section class="section section-white">
-            <div class="container" style="text-align: center;">
-                <h2>Join the Experiment</h2>
-                <p style="max-width: 600px; margin: 0 auto 2rem auto;">
-                    We're shipping our first beta units now. If you're an AI enthusiast, robotics hobbyist, or developer who wants to train and deploy real neural navigation models on affordable hardware, we'd love to have you as a beta pilot.
+                <div class="ships-layout">
+                    <div class="ships-photo">
+                        <img src="images/plexus1.jpg" alt="The Plexus robot — a small two-wheeled platform with a camera module, battery pack, and custom PCB enclosed in laser-cut acrylic plates.">
+                    </div>
+                    <div class="ships-specs">
+                        <ul>
+                            <li><strong>XIAO ESP32-S3 Sense</strong> — MCU with OV2640 camera</li>
+                            <li><strong>Custom PCB</strong> — Motor drivers, power regulation, sensors</li>
+                            <li><strong>2× TT Gearbox Motors</strong> — Differential drive</li>
+                            <li><strong>Laser-Cut Acrylic Chassis</strong> — Three-plate sandwich</li>
+                            <li><strong>IR Proximity Sensor</strong> — Forward obstacle detection</li>
+                            <li><strong>Ball Caster</strong> — Rear passive support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ships-dashboard">
+                    <img src="images/software1.png" alt="The Embrained Cognitive Engine dashboard showing live camera feed, latent space visualization, and autonomy controls.">
+                </div>
+
+                <p style="text-align: center; font-weight: 600; color: var(--clr-text-main); font-size: 1.1rem;">
+                    Open-source. Full training pipeline. Unbox to autonomous navigation in one session.
                 </p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                    <a href="beta.html" class="btn">Get a Beta Unit</a>
+
+                <div class="ships-ctas">
+                    <a href="https://embrained-shop.myshopify.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
+                    <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" class="btn btn-secondary" target="_blank" rel="noopener">Join Discord</a>
                 </div>
             </div>
         </section>
@@ -194,14 +158,33 @@
 
     <footer class="footer">
         <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/Embrained/embrained-app" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2020.00006/full" target="_blank" rel="noopener">Harris et al., 2020</a>
+                <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" target="_blank" rel="noopener">Discord</a>
+                <a href="team.html">Team</a>
+            </div>
             <p style="margin-bottom: 0.5rem;">&copy; 2026 Embrained, LLC</p>
-            <p style="font-size: 0.8rem; margin-bottom: 0;">
-                <a href="legal/Terms_of_Service.md" style="color: var(--clr-text-muted);">Terms of Service</a> &middot;
-                <a href="legal/Privacy_Policy.md" style="color: var(--clr-text-muted);">Privacy Policy</a> &middot;
-                <a href="legal/Return_Policy.md" style="color: var(--clr-text-muted);">Return Policy</a>
+            <p class="footer-legal">
+                <a href="legal/Terms_of_Service.md">Terms of Service</a> &middot;
+                <a href="legal/Privacy_Policy.md">Privacy Policy</a> &middot;
+                <a href="legal/Return_Policy.md">Return Policy</a>
             </p>
         </div>
     </footer>
+
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
