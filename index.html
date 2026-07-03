@@ -59,11 +59,11 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <p class="hero-caption">Fully autonomous navigation to a goal — learned VQ-VAE perception, CQL policy, zero hand-coded control.</p>
+                <p class="hero-caption">Fully autonomous navigation to a goal — learned autoencoder perception, RL policy, zero hand-coded control.</p>
 
                 <div class="hero-ctas">
                     <a href="https://github.com/Embrained/embrained-app" class="btn btn-secondary" target="_blank" rel="noopener">View Source</a>
-                    <a href="https://embrained-shop.myshopify.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
+                    <a href="https://admin.shopify.com/store/embrained-llc/products/10581913174325" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
                 </div>
             </div>
         </section>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="arch-node arch-node-laptop">
                         <h3>Your Laptop</h3>
-                        <p>VQ-VAE Perception · CQL Policy · GPU Inference</p>
+                        <p>Autoencoder Perception · RL Policy · GPU Inference</p>
                     </div>
                 </div>
 
@@ -104,12 +104,12 @@
 
                 <div class="neuro-cards" style="grid-template-columns: repeat(2, 1fr);">
                     <div class="neuro-card">
-                        <h3>Perception — VQ-VAE</h3>
-                        <p>A Vector-Quantized Variational Autoencoder compresses each camera frame into a discrete codebook vector — a compact spatial token that captures both where the robot is and which way it's facing. These learned codes are an engineering analog of place cells and head direction cells working together: biological neurons that fire for specific combinations of position and orientation, compressing rich sensory input into a small set of discrete spatial representations.</p>
+                        <h3>Perception — Variational Autoencoder</h3>
+                        <p>A Variational Autoencoder compresses each camera frame into a continuous latent state vector — a compact spatial token that captures both where the robot is and which way it's facing. These learned representations are an engineering analog of place cells and head direction cells working together: biological neurons that fire for specific combinations of position and orientation, compressing rich sensory input into a low-dimensional latent space.</p>
                     </div>
                     <div class="neuro-card">
                         <h3>Action — Policy Network</h3>
-                        <p>A Conservative Q-Learning policy takes the current spatial token and a goal token as input and selects the motor action most likely to move the robot toward its target. This is reward-driven action selection — the same fundamental computation that biological neural circuits use to adapt behavior in response to outcomes, learned offline from previously collected experience.</p>
+                        <p>A Reinforcement Learning (RL) policy takes the current spatial token and a goal token as input and selects the motor action most likely to move the robot toward its target. This is reward-driven action selection — the same fundamental computation that biological neural circuits use to adapt behavior in response to outcomes, learned offline from previously collected experience.</p>
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@
                 </p>
 
                 <div class="ships-ctas">
-                    <a href="https://embrained-shop.myshopify.com/products/plexus-mobile-robot-vision-only-navigation-r-d-kit" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
+                    <a href="https://admin.shopify.com/store/embrained-llc/products/10581913174325" class="btn" target="_blank" rel="noopener">Order Dev Kit</a>
                     <a href="https://discord.com/channels/1487132795833684228/1487132796920004640" class="btn btn-secondary" target="_blank" rel="noopener">Join Discord</a>
                 </div>
             </div>
